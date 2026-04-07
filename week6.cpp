@@ -4,7 +4,7 @@
 
 class my_application : public sb7::application {
 public:
-	// ÄÄÆÄÀÏ ½¦ÀÌ´õ
+	// ì»´íŒŒì¼ ì‰ì´ë”
 	GLuint compile_shaders(void) {
 		GLuint vertex_shader;
 		GLuint fragment_shader;
@@ -25,7 +25,7 @@ public:
 		return program;
 	}
 
-	// ÄÄÆÄÀÏ ½¦ÀÌ´õ 2
+	// ì»´íŒŒì¼ ì‰ì´ë” 2
 	GLuint compile_shaders2(void) {
 		GLuint vertex_shader2;
 		GLuint fragment_shader2;
@@ -91,13 +91,16 @@ public:
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-		// À§Ä¡
+		// ìœ„ì¹˜
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 		
-		// »ö»ó
+		// ìƒ‰ìƒ
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 		glEnableVertexAttribArray(1);
+
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindVertexArray(0);
 	}
 
 	virtual void shutdown() {
