@@ -4,7 +4,7 @@
 
 class my_application : public sb7::application {
 public:
-	// ƒƒ∆ƒ¿œ Ω¶¿Ã¥ı
+	// Ïª¥ÌååÏùº ÏâêÏù¥Îçî
 	GLuint compile_shaders(void) {
 		GLuint vertex_shader;
 		GLuint fragment_shader;
@@ -32,7 +32,7 @@ public:
 		glBindVertexArray(vertex_array_object);
 
 		GLfloat vertices[] = {
-			// æ’ 123 324
+			// Ïïû 123 324
 			-0.25f, 0.25f, 0.25f, 0.0f, 1.0f, 0.0f, 
 			-0.25f, -0.25f, 0.25f, 0.0f, 1.0f, 0.0f, 
 			0.25f, 0.25f, 0.25f, 0.0f, 1.0f, 0.0f,
@@ -41,7 +41,7 @@ public:
 			-0.25f, -0.25f, 0.25f, 0.0f, 1.0f, 0.0f,
 			0.25f, -0.25f, 0.25f, 0.0f, 1.0f, 0.0f,
 
-			// µ⁄ 132 342
+			// Îí§ 132 342
 			-0.25f, 0.25f, -0.25f, 0.0f, 1.0f, 0.0f,
 			0.25f, 0.25f, -0.25f, 0.0f, 1.0f, 0.0f,
 			-0.25f, -0.25f, -0.25f, 0.0f, 1.0f, 0.0f,
@@ -50,7 +50,7 @@ public:
 			0.25f, -0.25f, -0.25f, 0.0f, 1.0f, 0.0f,
 			-0.25f, -0.25f, -0.25f, 0.0f, 1.0f, 0.0f,
 
-			// ¿ß
+			// ÏúÑ
 			-0.25f, 0.25f, -0.25f, 1.0f, 0.0f, 0.0f,
 			-0.25f, 0.25f, 0.25f, 1.0f, 0.0f, 0.0f,
 			0.25f, 0.25f, -0.25f, 1.0f, 0.0f, 0.0f,
@@ -59,7 +59,7 @@ public:
 			-0.25f, 0.25f, 0.25f, 1.0f, 0.0f, 0.0f,
 			0.25f, 0.25f, 0.25f, 1.0f, 0.0f, 0.0f,
 
-			// æ∆∑°
+			// ÏïÑÎûò
 			-0.25f, -0.25f, -0.25f, 1.0f, 0.0f, 0.0f,
 			0.25f, -0.25f, -0.25f, 1.0f, 0.0f, 0.0f,
 			-0.25f, -0.25f, 0.25f, 1.0f, 0.0f, 0.0f,
@@ -68,7 +68,7 @@ public:
 			0.25f, -0.25f, 0.25f, 1.0f, 0.0f, 0.0f,
 			-0.25f, -0.25f, 0.25f, 1.0f, 0.0f, 0.0f,
 
-			// ¡¬
+			// Ï¢å
 			-0.25f, 0.25f, 0.25f, 0.0f, 0.0f, 1.0f,
 			-0.25f, 0.25f, -0.25f, 0.0f, 0.0f, 1.0f,
 			-0.25f, -0.25f, 0.25f, 0.0f, 0.0f, 1.0f,
@@ -77,7 +77,7 @@ public:
 			-0.25f, 0.25f, -0.25f, 0.0f, 0.0f, 1.0f,
 			-0.25f, -0.25f, -0.25f, 0.0f, 0.0f, 1.0f,
 			
-			// øÏ
+			// Ïö∞
 			0.25f, 0.25f, 0.25f, 0.0f, 0.0f, 1.0f,
 			0.25f, -0.25f, 0.25f, 0.0f, 0.0f, 1.0f,
 			0.25f, 0.25f, -0.25f, 0.0f, 0.0f, 1.0f,
@@ -92,11 +92,11 @@ public:
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-		// ¿ßƒ°
+		// ÏúÑÏπò
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 
-		// ªˆªÛ
+		// ÏÉâÏÉÅ
 		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 		glEnableVertexAttribArray(1);
 
@@ -121,7 +121,7 @@ public:
 		glUseProgram(rendering_program);
 		float angle = currentTime * 50;
 
-		vmath::mat4 rm = vmath::rotate(angle, 0.0f, 1.0f, .0f);
+		vmath::mat4 rm = vmath::rotate(angle, 0.0f, 1.0f, 0.0f);
 		GLuint rotMatLocation = glGetUniformLocation(rendering_program, "rotMat");
 		glUniformMatrix4fv(rotMatLocation, 1, GL_FALSE, rm);
 
