@@ -2,7 +2,7 @@
 #include <vmath.h>
 #include <shader.h>
 
-// ½ÇÇàÇÏ´Â °Í¸¸ ÁÖ¼®ÇØÁ¦
+// Ï´ Í¸ Ö¼
 #define STB_IMAGE_IMPLEMENTATION
 
 #include "stb_image.h"
@@ -17,7 +17,7 @@ struct Mesh
 
 class my_application : public sb7::application {
 public:
-	// ÄÄÆÄÀÏ ½¦ÀÌ´õ
+	//  Ì´
 	GLuint compile_shaders(void) {
 		GLuint vertex_shader;
 		GLuint fragment_shader;
@@ -43,63 +43,63 @@ public:
 		Mesh mesh;
 
 		GLfloat vertices[] = {
-			// position                // color               // texcoord
+			// position                // color               // texcoord    // normal
 
-			// ¾Õ
-			 0.25f,  0.25f,  0.25f,    1.0f, 0.0f, 0.0f,    1.0f, 1.0f,
-			-0.25f,  0.25f,  0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 1.0f,
-			-0.25f, -0.25f,  0.25f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f,
-			 0.25f, -0.25f,  0.25f,    1.0f, 1.0f, 1.0f,    1.0f, 0.0f,
+			// front (+z)
+			 0.25f,  0.25f,  0.25f,    1.0f, 0.0f, 0.0f,    1.0f, 1.0f,    0.0f, 0.0f, 1.0f,
+			-0.25f,  0.25f,  0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 1.0f,    0.0f, 0.0f, 1.0f,
+			-0.25f, -0.25f,  0.25f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f,    0.0f, 0.0f, 1.0f,
+			 0.25f, -0.25f,  0.25f,    1.0f, 1.0f, 1.0f,    1.0f, 0.0f,    0.0f, 0.0f, 1.0f,
 
-			 // µÚ
-			  0.25f,  0.25f, -0.25f,    1.0f, 0.0f, 0.0f,    1.0f, 1.0f,
-			 -0.25f,  0.25f, -0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 1.0f,
-			 -0.25f, -0.25f, -0.25f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f,
-			  0.25f, -0.25f, -0.25f,    1.0f, 1.0f, 1.0f,    1.0f, 0.0f,
+			 // back (-z)
+			  0.25f,  0.25f, -0.25f,    1.0f, 0.0f, 0.0f,    1.0f, 1.0f,    0.0f, 0.0f, -1.0f,
+			 -0.25f,  0.25f, -0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 1.0f,    0.0f, 0.0f, -1.0f,
+			 -0.25f, -0.25f, -0.25f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f,    0.0f, 0.0f, -1.0f,
+			  0.25f, -0.25f, -0.25f,    1.0f, 1.0f, 1.0f,    1.0f, 0.0f,    0.0f, 0.0f, -1.0f,
 
-			  // ÁÂ
-			  -0.25f,  0.25f,  0.25f,    1.0f, 0.0f, 0.0f,    1.0f, 1.0f,
-			  -0.25f,  0.25f, -0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 1.0f,
-			  -0.25f, -0.25f, -0.25f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f,
-			  -0.25f, -0.25f,  0.25f,    1.0f, 1.0f, 1.0f,    1.0f, 0.0f,
+			  // left (-x)
+			  -0.25f,  0.25f,  0.25f,    1.0f, 0.0f, 0.0f,    1.0f, 1.0f,   -1.0f, 0.0f, 0.0f,
+			  -0.25f,  0.25f, -0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 1.0f,   -1.0f, 0.0f, 0.0f,
+			  -0.25f, -0.25f, -0.25f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f,   -1.0f, 0.0f, 0.0f,
+			  -0.25f, -0.25f,  0.25f,    1.0f, 1.0f, 1.0f,    1.0f, 0.0f,   -1.0f, 0.0f, 0.0f,
 
-			  // ¿ì
-			  0.25f,  0.25f, -0.25f,    1.0f, 0.0f, 0.0f,    1.0f, 1.0f,
-			  0.25f,  0.25f,  0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 1.0f,
-			  0.25f, -0.25f,  0.25f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f,
-			  0.25f, -0.25f, -0.25f,    1.0f, 1.0f, 1.0f,    1.0f, 0.0f,
+			  // right (+x)
+			  0.25f,  0.25f, -0.25f,    1.0f, 0.0f, 0.0f,    1.0f, 1.0f,    1.0f, 0.0f, 0.0f,
+			  0.25f,  0.25f,  0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 1.0f,    1.0f, 0.0f, 0.0f,
+			  0.25f, -0.25f,  0.25f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f,    1.0f, 0.0f, 0.0f,
+			  0.25f, -0.25f, -0.25f,    1.0f, 1.0f, 1.0f,    1.0f, 0.0f,    1.0f, 0.0f, 0.0f,
 
-			  // À§
-			   0.25f,  0.25f, -0.25f,    1.0f, 0.0f, 0.0f,    1.0f, 1.0f,
-			  -0.25f,  0.25f, -0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 1.0f,
-			  -0.25f,  0.25f,  0.25f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f,
-			   0.25f,  0.25f,  0.25f,    1.0f, 1.0f, 1.0f,    1.0f, 0.0f,
+			  // top (+y)
+			   0.25f,  0.25f, -0.25f,    1.0f, 0.0f, 0.0f,    1.0f, 1.0f,    0.0f, 1.0f, 0.0f,
+			  -0.25f,  0.25f, -0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 1.0f,    0.0f, 1.0f, 0.0f,
+			  -0.25f,  0.25f,  0.25f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f,    0.0f, 1.0f, 0.0f,
+			   0.25f,  0.25f,  0.25f,    1.0f, 1.0f, 1.0f,    1.0f, 0.0f,    0.0f, 1.0f, 0.0f,
 
-			   // ¾Æ·¡
-				0.25f, -0.25f,  0.25f,    1.0f, 0.0f, 0.0f,    1.0f, 1.0f,
-			   -0.25f, -0.25f,  0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 1.0f,
-			   -0.25f, -0.25f, -0.25f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f,
-				0.25f, -0.25f, -0.25f,    1.0f, 1.0f, 1.0f,    1.0f, 0.0f
+			   // bottom (-y)
+				0.25f, -0.25f,  0.25f,    1.0f, 0.0f, 0.0f,    1.0f, 1.0f,    0.0f, -1.0f, 0.0f,
+			   -0.25f, -0.25f,  0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 1.0f,    0.0f, -1.0f, 0.0f,
+			   -0.25f, -0.25f, -0.25f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f,    0.0f, -1.0f, 0.0f,
+				0.25f, -0.25f, -0.25f,    1.0f, 1.0f, 1.0f,    1.0f, 0.0f,    0.0f, -1.0f, 0.0f
 		};
 
 		GLuint indices[] = {
 			0, 1, 2,
-			0, 2, 3,       // ¾Õ
+			0, 2, 3,       // 
 
 			4, 6, 5,
-			4, 7, 6,       // µÚ
+			4, 7, 6,       // 
 
 			8, 9, 10,
-			8, 10, 11,     // ÁÂ
+			8, 10, 11,     // 
 
 			12, 13, 14,
-			12, 14, 15,    // ¿ì
+			12, 14, 15,    // 
 
 			16, 17, 18,
-			16, 18, 19,    // À§
+			16, 18, 19,    // 
 
 			20, 21, 22,
-			20, 22, 23     // ¾Æ·¡
+			20, 22, 23     // Æ·
 		};
 
 		glGenVertexArrays(1, &mesh.vao);
@@ -113,14 +113,17 @@ public:
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.ebo);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(float), (void*)(3 * sizeof(float)));
 		glEnableVertexAttribArray(1);
 
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 11 * sizeof(float), (void*)(6 * sizeof(float)));
 		glEnableVertexAttribArray(2);
+
+		glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(float), (void*)(8 * sizeof(float)));
+		glEnableVertexAttribArray(3);
 
 		glBindVertexArray(0);
 
@@ -135,31 +138,31 @@ public:
 		GLfloat vertices[] = {
 			// position                // color               // texcoord
 
-			// ¾Õº® (+z) : ³»ºÎ¿¡¼­ º¼ ¶§ Á¤»ó ¹æÇâ
+			// Õº (+z) : Î¿    
 			 0.25f,  0.25f,  0.25f,    1.0f, 0.0f, 0.0f,    0.0f, 3.0f,
 			-0.25f,  0.25f,  0.25f,    0.0f, 1.0f, 0.0f,    3.0f, 3.0f,
 			-0.25f, -0.25f,  0.25f,    0.0f, 0.0f, 1.0f,    3.0f, 0.0f,
 			 0.25f, -0.25f,  0.25f,    1.0f, 1.0f, 1.0f,    0.0f, 0.0f,
 
-			 // µÚº® (-z)
+			 // Úº (-z)
 			  0.25f,  0.25f, -0.25f,    1.0f, 0.0f, 0.0f,    3.0f, 3.0f,
 			 -0.25f,  0.25f, -0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 3.0f,
 			 -0.25f, -0.25f, -0.25f,    0.0f, 0.0f, 1.0f,    0.0f, 0.0f,
 			  0.25f, -0.25f, -0.25f,    1.0f, 1.0f, 1.0f,    3.0f, 0.0f,
 
-			  // ¿Þº® (-x)
+			  // Þº (-x)
 			  -0.25f,  0.25f,  0.25f,    1.0f, 0.0f, 0.0f,    0.0f, 3.0f,
 			  -0.25f,  0.25f, -0.25f,    0.0f, 1.0f, 0.0f,    3.0f, 3.0f,
 			  -0.25f, -0.25f, -0.25f,    0.0f, 0.0f, 1.0f,    3.0f, 0.0f,
 			  -0.25f, -0.25f,  0.25f,    1.0f, 1.0f, 1.0f,    0.0f, 0.0f,
 
-			  // ¿À¸¥º® (+x)
+			  //  (+x)
 			   0.25f,  0.25f, -0.25f,    1.0f, 0.0f, 0.0f,    0.0f, 3.0f,
 			   0.25f,  0.25f,  0.25f,    0.0f, 1.0f, 0.0f,    3.0f, 3.0f,
 			   0.25f, -0.25f,  0.25f,    0.0f, 0.0f, 1.0f,    3.0f, 0.0f,
 			   0.25f, -0.25f, -0.25f,    1.0f, 1.0f, 1.0f,    0.0f, 0.0f,
 
-			   // ¹Ù´Ú (-y)
+			   // Ù´ (-y)
 				0.25f, -0.25f,  0.25f,    1.0f, 0.0f, 0.0f,    3.0f, 3.0f,
 			   -0.25f, -0.25f,  0.25f,    1.0f, 1.0f, 0.0f,    0.0f, 3.0f,
 			   -0.25f, -0.25f, -0.25f,    0.0f, 1.0f, 0.0f,    0.0f, 0.0f,
@@ -168,19 +171,19 @@ public:
 
 		GLuint indices[] = {
 			0, 1, 2,
-			0, 2, 3,       // ¾Õ
+			0, 2, 3,       // 
 
 			4, 6, 5,
-			4, 7, 6,       // µÚ
+			4, 7, 6,       // 
 
 			8, 9, 10,
-			8, 10, 11,     // ÁÂ
+			8, 10, 11,     // 
 
 			12, 13, 14,
-			12, 14, 15,    // ¿ì
+			12, 14, 15,    // 
 
 			16, 17, 18,
-			16, 18, 19     // ¾Æ·¡
+			16, 18, 19     // Æ·
 		};
 
 		glGenVertexArrays(1, &mesh.vao);
@@ -216,42 +219,42 @@ public:
 		GLfloat vertices[] = {
 			// position                 // color                // texcoord
 
-			// ¾Õ
+			// 
 			0.0f,   0.5f,  0.0f,        1.0f, 1.0f, 1.0f,      0.5f, 1.0f,
 		   -0.25f,  0.0f, 0.25f,       1.0f, 0.0f, 0.0f,      0.0f, 0.0f,
 			0.25f,  0.0f, 0.25f,       1.0f, 1.0f, 0.0f,      1.0f, 0.0f,
 
-			// µÚ
+			// 
 			0.0f,   0.5f,  0.0f,        1.0f, 1.0f, 1.0f,      0.5f, 1.0f,
 			0.25f,  0.0f, -0.25f,      0.0f, 1.0f, 0.0f,      0.0f, 0.0f,
 		   -0.25f,  0.0f, -0.25f,      0.0f, 1.0f, 1.0f,      1.0f, 0.0f,
 
-		   // ÁÂ
+		   // 
 		   0.0f,   0.5f,  0.0f,        1.0f, 1.0f, 1.0f,      0.5f, 1.0f,
 		  -0.25f,  0.0f, -0.25f,      0.0f, 1.0f, 1.0f,      0.0f, 0.0f,
 		  -0.25f,  0.0f,  0.25f,      1.0f, 0.0f, 0.0f,      1.0f, 0.0f,
 
-		  // ¿ì
+		  // 
 		  0.0f,   0.5f,  0.0f,        1.0f, 1.0f, 1.0f,      0.5f, 1.0f,
 		  0.25f,  0.0f,  0.25f,      1.0f, 1.0f, 0.0f,      0.0f, 0.0f,
 		  0.25f,  0.0f, -0.25f,      0.0f, 1.0f, 0.0f,      1.0f, 0.0f,
 
-		  // ¹Ø¾Õ
+		  // Ø¾
 			0.0f,   -0.5f,  0.0f,        0.0f, 0.0f, 0.0f,      0.5f, 1.0f,
 		   0.25f,  0.0f, 0.25f,       1.0f, 1.0f, 0.0f,      0.0f, 0.0f,
 			-0.25f,  0.0f, 0.25f,       1.0f, 0.0f, 0.0f,      1.0f, 0.0f,
 
-			// ¹ØµÚ
+			// Øµ
 			0.0f,   -0.5f,  0.0f,        0.0f, 0.0f, 0.0f,      0.5f, 1.0f,
 			-0.25f,  0.0f, -0.25f,      0.0f, 1.0f, 1.0f,      0.0f, 0.0f,
 			0.25f,  0.0f, -0.25f,      0.0f, 1.0f, 0.0f,      1.0f, 0.0f,
 
-			// ¹ØÁÂ
+			// 
 			0.0f,   -0.5f,  0.0f,        0.0f, 0.0f, 0.0f,      0.5f, 1.0f,
 		   -0.25f,  0.0f, 0.25f,      1.0f, 0.0f, 0.0f,      0.0f, 0.0f,
 		   -0.25f,  0.0f,  -0.25f,      0.0f, 1.0f, 1.0f,      1.0f, 0.0f,
 
-		   // ¹Ø¿ì
+		   // Ø¿
 		   0.0f,   -0.5f,  0.0f,        0.0f, 0.0f, 0.0f,      0.5f, 1.0f,
 		   0.25f,  0.0f,  -0.25f,      0.0f, 1.0f, 1.0f,      0.0f, 0.0f,
 		   0.25f,  0.0f, 0.25f,      1.0f, 1.0f, 0.0f,      1.0f, 0.0f,
@@ -477,7 +480,7 @@ public:
 		{
 			int faceRenderMode = renderMode;
 
-			// ¾Æ·§¸é(face == 4)¸¸ ÅØ½ºÃ³ + »ö»ó È¥ÇÕ
+			// Æ·(face == 4) Ø½Ã³ +  È¥
 			if (face == 4)
 				faceRenderMode = 2;
 			else faceRenderMode = 3;
@@ -624,25 +627,25 @@ public:
 	}
 
 	virtual void shutdown() {
-		// ¼ÎÀÌ´õ ÇÁ·Î±×·¥ »èÁ¦
+		// Ì´ Î±×· 
 		glDeleteProgram(rendering_program);
 
-		// roomMesh Á¤¸®
+		// roomMesh 
 		glDeleteVertexArrays(1, &roomMesh.vao);
 		glDeleteBuffers(1, &roomMesh.vbo);
 		glDeleteBuffers(1, &roomMesh.ebo);
 
-		// cubeMesh Á¤¸®
+		// cubeMesh 
 		glDeleteVertexArrays(1, &cubeMesh.vao);
 		glDeleteBuffers(1, &cubeMesh.vbo);
 		glDeleteBuffers(1, &cubeMesh.ebo);
 
-		// criMesh Á¤¸®
+		// criMesh 
 		glDeleteVertexArrays(1, &criMesh.vao);
 		glDeleteBuffers(1, &criMesh.vbo);
 		glDeleteBuffers(1, &criMesh.ebo);
 
-		// ÅØ½ºÃ³ Á¤¸®
+		// Ø½Ã³ 
 		glDeleteTextures(1, &texFloor);
 		glDeleteTextures(1, &texCubeSide);
 		glDeleteTextures(1, &texCubeUD);
@@ -673,6 +676,8 @@ public:
 			0.1f,
 			1000.0f
 		);
+
+		glUseProgram(rendering_program);
 
 		vmath::vec3 lightPos(1.5f, 2.0f, 2.0f);
 		vmath::vec3 lightColor(1.0f, 1.0f, 1.0f);
